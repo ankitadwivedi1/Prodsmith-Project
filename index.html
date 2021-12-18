@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodsmiths Project</title>
+    <link rel="stylesheet" href="invoice.css">
+
+    
+</head>
+<body>
+    <h2>Technical Store (Invoice)</h2>
+<div class="container-fluid">
+    <div class="container">
+        <div class="part1">
+            <fieldset>
+                <legend>Personal Information</legend>
+                Full Name: <input type="text" id="name"> <br/>
+
+                Your Email: <input type="text" id="email">
+            </fieldset>
+        </div>
+
+
+        <div class="part2">
+            <fieldset>
+                <legend>Your Orders</legend>
+                Laptop(Rs. 10000): <input type="text" id="Laptop"> <br/>
+                Monitor (Rs. 20000): <input type="text" id="Monitor"><br/>
+                Joystic (Rs. 600): <input type="text" id="Joystic"><br/>
+                Pendrive (Rs. 150): <input type="text" id="Pendrive"><br/>
+            </fieldset>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <fieldset>
+            <legend>Your Bill</legend>
+            <h3>Your Name:<span id="name2"></span></h3>
+            <h3>Email: <span id="email2"></span></h3>
+            <table border="1" >
+                <thead>
+                    <tr><th>Menu</th><th>Price</th><th>Quantity</th><th>Amout</th></tr>
+                </thead>
+                <tbody id="bill">
+                </tbody>
+
+                
+
+            </table>
+            </fieldset>
+            <h1>Total Amout: Rs. <span id="amount">0</span></h1>
+            
+    </div>
+</div>
+<script>
+var Laptop= 10000, Monitor = 20000, Joystic = 600, Pendrive = 150;
+var Laptop_q=0, Monitor_q=0, Joystic_q=0, Pendrive_q=0;
+var name = "", email="";
+var LaptopBill="",MonitorBill="",JoysticBill="",PendriveBill="";
+var total_amount=0;
+document.getElementById("name").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("name2").innerHTML=this.value;
+});
+
+document.getElementById("email").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("email2").innerHTML=this.value;
+});
+
+
+
+document.getElementById("Laptop").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    LaptopBill="";
+    Laptop_q=0;
+    showBill();
+}else{
+    Laptop_q=this.value;
+    LaptopBill="<tr><td>Laptop</td><td>Rs. "+Laptop+"</td><td>"+Laptop_q+"</td><td>"+Laptop+"x"+Laptop_q+" = "+Laptop*Laptop_q+"</td></tr>";
+    showBill();
+
+}
+});
+
+document.getElementById("Monitor").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    MonitorBill="";
+    Monitor_q=0;
+    showBill();
+
+}else{
+    Monitor_q=this.value;
+    MonitorBill="<tr><td>Monitor</td><td>Rs. "+Monitor+"</td><td>"+Monitor_q+"</td><td>"+Monitor+"x"+Monitor_q+" = "+Monitor*Monitor_q+"</td></tr>";
+    showBill();
+}
+});
+
+document.getElementById("Joystic").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    JoysticBill="";
+    Joystic_q=0;
+    showBill();
+
+}else{
+    Joystic_q=this.value;
+    JoysticBill="<tr><td>Joystic</td><td>Rs. "+Joystic+"</td><td>"+Joystic_q+"</td><td>"+Joystic+"x"+Joystic_q+" = "+Joystic*Joystic_q+"</td></tr>";
+    showBill();
+}
+});
+
+document.getElementById("Pendrive").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    PendriveBill="";
+    Pendrive_q=0;
+    showBill();
+
+}else{
+    Pendrive_q=this.value;
+    PendriveBill="<tr><td>Pendrive</td><td>Rs. "+Pendrive+"</td><td>"+Pendrive_q+"</td><td>"+Joystic+"x"+Pendrive_q+" = "+Pendrive*Pendrive_q+"</td></tr>";
+    showBill();
+}
+});
+
+
+function showBill(){
+    document.getElementById("bill").innerHTML=LaptopBill+MonitorBill+JoysticBill+PendriveBill; //table statement
+    document.getElementById("amount").innerHTML = Laptop*Laptop_q+Monitor*Monitor_q+Joystic*Joystic_q+Pendrive*Pendrive_q; // total amount
+}
+</script>
+</body>
+</html>
